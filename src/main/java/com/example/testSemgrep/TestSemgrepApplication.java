@@ -9,6 +9,7 @@ public class TestSemgrepApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TestSemgrepApplication.class, args);
 		System.out.println("test semgrep");
+		System.out.println("kk");
 	}
 
 }
