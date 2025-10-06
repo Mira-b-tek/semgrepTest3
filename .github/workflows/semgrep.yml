@@ -39,7 +39,7 @@ jobs:
     env:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     container:
-      image: semgrep/semgrep
+      image: semgrep/semgrep:latest
     steps:
       - uses: actions/checkout@v4
 
@@ -48,8 +48,6 @@ jobs:
         with:
           name: mavendeptree
 
-      - name: Authenticate Semgrep
-        run: semgrep login --token $SEMGREP_APP_TOKEN
 
       - name: Run Semgrep supply-chain scan and fail on critical/high
         run: |
@@ -60,7 +58,6 @@ jobs:
           else
             echo "No critical/high vulnerabilities found."
           fi
-
 
       - name: Upload Semgrep Report
         uses: actions/upload-artifact@v4
